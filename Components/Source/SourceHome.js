@@ -1,9 +1,9 @@
 import React from "react";
 import axiosInstance from "../../utils/axiosInstance";
-import PlanDetailsHome from "@/Components/PlanDetails/PlanDetailsHome";
+
 export const getServerSideProps = async (context) => {
   const slug = context.params.slug;
-  const res = await axiosInstance.get(`/plan-details/${slug}`);
+  const res = await axiosInstance.get(`/source/${slug}`);
   const data = await res.data;
   return {
     props: {
@@ -12,12 +12,12 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const index = ({ data }) => {
+const SourceHome = () => {
   return (
-    <>
-      <PlanDetailsHome planDetails={data} />
-    </>
+    <main id="main">
+      <h2>Working on it</h2>
+    </main>
   );
 };
 
-export default index;
+export default SourceHome;

@@ -213,8 +213,42 @@ const Homepage = () => {
                       <h5 className="card-title">
                         Reports <span>/Today</span>
                       </h5>
-
-                      <div id="reportsChart"></div>
+                      {/* "completed_total": [
+{
+"_id": "familyhomeplans",
+"count": 2345,
+"last_entry": "2024-07-08T13:32:33.176Z"
+}, */}
+                      <div id="reportsChart">
+                        {
+                          <table className="table table-borderless datatable">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Source</th>
+                                <th scope="col">Count</th>
+                                <th scope="col">Last Entry</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {data?.completed_total?.map((item, index) => (
+                                <tr key={index}>
+                                  <th>{index + 1}</th>
+                                  <th scope="row">
+                                    <Link href={`/plan-details/${item?._id}`}>
+                                      {item?._id}
+                                    </Link>
+                                  </th>
+                                  <td>{item?.count}</td>
+                                  <td>
+                                    {new Date(item?.last_entry).toDateString()}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        }
+                      </div>
 
                       <script>
                         {/* document.addEventListener("DOMContentLoaded", () => {

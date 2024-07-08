@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { fetchHomeData } from "@/features/homepage/homepageSlice";
 const Navbar = () => {
   const { userInformation } = useSelector((state) => state.user);
+  const { data } = useSelector((state) => state.homepage);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -326,13 +327,13 @@ const Navbar = () => {
       <aside id="sidebar" className="sidebar">
         <ul className="sidebar-nav" id="sidebar-nav">
           <li className="nav-item">
-            <a className="nav-link " href="index.html">
+            <Link className="nav-link " href="/">
               <i className="bi bi-grid"></i>
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a
               className="nav-link collapsed"
               data-bs-target="#components-nav"
@@ -355,16 +356,20 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
 
           <li className="nav-heading">Plan Sources</li>
 
-          <li className="nav-item">
-            <a className="nav-link collapsed" href="pages-register.html">
-              <i className="bi bi-card-list"></i>
-              <span>Register</span>
-            </a>
-          </li>
+          {data?.completed_total?.map((item) => {
+            return (
+              <li className="nav-item">
+                <Link className="nav-link" href={`/source/${item?._id}`}>
+                  <i className="bi bi-file-earmark-text"></i>
+                  <span>{item?._id.toUpperCase()}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </aside>
     </div>
