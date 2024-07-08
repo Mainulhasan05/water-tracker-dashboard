@@ -1,5 +1,5 @@
 # Use a Node.js base image
-FROM node:20-alpine
+FROM public.ecr.aws/docker/library/node:latest as node21
 
 # Set the working directory
 WORKDIR /app
@@ -7,16 +7,15 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files to the working directory
 COPY package.json package-lock.json ./
 
-# Install dependencies for production
-RUN npm update --production
+# Install dependencies
+RUN npm install -f
 
 # Copy the rest of the application files
 COPY . .
 
 # Build the Next.js app
-RUN npm i sass
-RUN npm i sharp
-RUN npm run build
+RUN npm i sharp -f
+RUN npm run build -f
 
 # Set the command to start the app
 CMD ["npm", "start"]

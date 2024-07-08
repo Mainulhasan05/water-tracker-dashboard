@@ -6,6 +6,9 @@ const nextConfig = {
     // API:"http://localhost:5000",
     IMAGE_URL: "http://localhost:5000",
   },
+  images: {
+    domains: ["localhost"],
+  },
 };
 
 export default nextConfig;
