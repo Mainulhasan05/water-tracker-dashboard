@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchHomeData } from "@/features/homepage/homepageSlice";
 import Link from "next/link";
+import toast from "react-hot-toast";
 const Homepage = () => {
   const { data } = useSelector((state) => state.homepage);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -17,6 +20,17 @@ const Homepage = () => {
               </li>
               <li className="breadcrumb-item active">Dashboard</li>
             </ol>
+            {/* at the middle add a refresh button */}
+            <button
+              className="btn btn-primary"
+              onClick={async () => {
+                await dispatch(fetchHomeData());
+                toast.success("Data Refreshed");
+                alert("Data Refreshed");
+              }}
+            >
+              Refresh
+            </button>
           </nav>
         </div>
 

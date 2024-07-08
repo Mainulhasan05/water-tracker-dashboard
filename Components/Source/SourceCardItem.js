@@ -11,7 +11,7 @@ const SourceCardItem = ({ item }) => {
           className="card-img-top"
           alt="Home Plan Image"
           width={300}
-          height={300}
+          height={250}
         />
       </Link>
       <div className="card-body">
@@ -22,20 +22,34 @@ const SourceCardItem = ({ item }) => {
           {/* <span className="text-primary">from $1395.00</span> */}
         </div>
         <div className="row text-center">
-          <div className="col-4">
-            <h6 className="mb-1">2782</h6>
-            <small className="text-muted">sq ft</small>
-          </div>
-          <div className="col-4">
+          {item?.key_specifications?.map((item) => {
+            const value = item.split(" ")[0];
+            const key = item.split(" ")[1];
+            return (
+              <div className="col-4 mb-1">
+                <h6 className="mb-1">{value}</h6>
+                <small className="text-muted">{key}</small>
+              </div>
+            );
+          })}
+          {/* {item?.key_specifications?.(item).map((item) => {
+            return (
+              <div className="col-4">
+                <h6 className="mb-1">{item}</h6>
+                <small className="text-muted">bed</small>
+              </div>
+            );
+          })} */}
+          {/* <div className="col-4">
             <h6 className="mb-1">4</h6>
             <small className="text-muted">bed</small>
           </div>
           <div className="col-4">
             <h6 className="mb-1">3</h6>
             <small className="text-muted">bath</small>
-          </div>
+          </div> */}
         </div>
-        <div className="row text-center mt-2">
+        {/* <div className="row text-center mt-2">
           <div className="col-4">
             <h6 className="mb-1">2</h6>
             <small className="text-muted">story</small>
@@ -48,7 +62,7 @@ const SourceCardItem = ({ item }) => {
             <h6 className="mb-1">50'</h6>
             <small className="text-muted">deep</small>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

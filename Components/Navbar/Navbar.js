@@ -5,6 +5,7 @@ import { setUserInformation } from "../../features/user/userSlice";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { fetchHomeData } from "@/features/homepage/homepageSlice";
+import toast from "react-hot-toast";
 const Navbar = () => {
   const { userInformation } = useSelector((state) => state.user);
   const { data } = useSelector((state) => state.homepage);
@@ -14,8 +15,11 @@ const Navbar = () => {
   const [users, setUsers] = useState([]);
   const [isToggle, setToggle] = useState(true);
   useEffect(() => {
-    dispatch(fetchHomeData());
+    loadHomepage();
   }, []);
+  const loadHomepage = () => {
+    dispatch(fetchHomeData());
+  };
 
   const handleSignout = () => {
     Cookies.remove("token");
