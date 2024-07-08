@@ -359,9 +359,12 @@ const Homepage = () => {
                               </th>
                               <td>{item?.source}</td>
                               <td>
-                                <a href="#" className="text-primary">
+                                <Link
+                                  href={`/plan-details/${item?.model_num}`}
+                                  className="text-primary"
+                                >
                                   {item?.title}
-                                </a>
+                                </Link>
                               </td>
                               <td>
                                 {new Date(item?.timestamp).toLocaleString()}

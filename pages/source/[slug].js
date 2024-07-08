@@ -1,10 +1,20 @@
 import SourceHome from "@/Components/Source/SourceHome";
 import React from "react";
-
-const index = () => {
+import axiosInstance from "../../utils/axiosInstance";
+export const getServerSideProps = async (context) => {
+  const slug = context.params.slug;
+  const res = await axiosInstance.get(`/source/${slug}`);
+  const data = await res.data;
+  return {
+    props: {
+      data,
+    },
+  };
+};
+const index = ({ data }) => {
   return (
     <div>
-      <SourceHome />
+      <SourceHome data={data} />
     </div>
   );
 };

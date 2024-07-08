@@ -1,21 +1,18 @@
 import React from "react";
 import axiosInstance from "../../utils/axiosInstance";
+import SourceCardItem from "./SourceCardItem";
 
-export const getServerSideProps = async (context) => {
-  const slug = context.params.slug;
-  const res = await axiosInstance.get(`/source/${slug}`);
-  const data = await res.data;
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-const SourceHome = () => {
+const SourceHome = ({ data }) => {
   return (
     <main id="main">
-      <h2>Working on it</h2>
+      <h2>Working on it {data?.data?.length}</h2>
+      <div className="row">
+        {data?.data?.map((item) => (
+          <div className="col-md-3">
+            <SourceCardItem key={item._id} item={item} />
+          </div>
+        ))}
+      </div>
     </main>
   );
 };
