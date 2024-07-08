@@ -19,7 +19,7 @@ const SourceCardItem = ({ item }) => {
           <Link href={`/plan-details/${item?.model_num}`}>
             <h5 className="card-title">Plan {item?.model_num}</h5>
           </Link>
-          <span className="text-primary">from $1395.00</span>
+          {/* <span className="text-primary">from $1395.00</span> */}
         </div>
         <div className="row text-center">
           <div className="col-4">
