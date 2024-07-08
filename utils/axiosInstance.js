@@ -8,13 +8,13 @@ const instance = axios.create({
   },
 });
 instance.interceptors.request.use(
-    (config) => {
-        const token = Cookies.get("mess_token");
-        if (token) {
-        config.headers["Authorization"] = `${token}`;
-        }
-        return config;
-    },
-    (error) => Promise.reject(error)
-    );
+  (config) => {
+    const token = Cookies.get("token");
+    if (token) {
+      config.headers["Authorization"] = `${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 export default instance;

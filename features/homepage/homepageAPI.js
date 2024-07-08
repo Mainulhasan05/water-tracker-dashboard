@@ -1,10 +1,11 @@
-import axios from "../../utils/axios";
+import axios from "../../utils/axiosInstance";
 
-export const getGraphData = async () => {
-    try {
-        const response = await axios.get("/api/graph");
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-    };
+// const loadData = async () => {
+//   const res = await axiosInstance.get("/data");
+//   setData(res.data);
+// };
+
+export const loadHomeData = async () => {
+  const res = await axios.get("/data");
+  return res.data;
+};
