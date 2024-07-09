@@ -3,15 +3,25 @@ import axiosInstance from "../../utils/axiosInstance";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHomeData } from "@/features/homepage/homepageSlice";
 import Link from "next/link";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 const Homepage = () => {
   const { data } = useSelector((state) => state.homepage);
   const dispatch = useDispatch();
+  useEffect(() => {
+    loadHome();
+  }, []);
+  const loadHome = async () => {
+    setInterval(async () => {
+      await dispatch(fetchHomeData());
+      toast.success("Data Refreshed");
+    }, 30000);
+  };
 
   return (
     <div>
       <main id="main" className="main">
         <div className="pagetitle">
+          <Toaster position="top-center" />
           <h1>Dashboard</h1>
           <nav>
             <ol className="breadcrumb">
@@ -26,7 +36,6 @@ const Homepage = () => {
               onClick={async () => {
                 await dispatch(fetchHomeData());
                 toast.success("Data Refreshed");
-                alert("Data Refreshed");
               }}
             >
               Refresh
