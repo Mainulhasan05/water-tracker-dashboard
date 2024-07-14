@@ -362,6 +362,16 @@ const Navbar = () => {
             </ul>
           </li> */}
 
+          <li className="nav-heading">
+            <span>Plan</span>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" href="/all-plans">
+              <i className="bi bi-file-earmark-text"></i>
+              <span>All Plans</span>
+            </Link>
+          </li>
+
           <li className="nav-heading">Plan Sources</li>
 
           {data?.completed_total?.map((item) => {

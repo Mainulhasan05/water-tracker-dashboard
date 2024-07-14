@@ -4,6 +4,7 @@ import axios from "../utils/axiosInstance";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUserInformation } from "@/features/user/userSlice";
+import Head from "next/head";
 
 // export const getServerSideProps = async (context) => {
 //   const token = context.req.cookies.mess_token;
@@ -44,6 +45,9 @@ import { setUserInformation } from "@/features/user/userSlice";
 const index = () => {
   return (
     <div>
+      <Head>
+        <title>Track</title>
+      </Head>
       <Homepage />
     </div>
   );
