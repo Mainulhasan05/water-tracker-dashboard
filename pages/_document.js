@@ -48,9 +48,9 @@ export default function Document() {
         <script src="/assets/vendor/php-email-form/validate.js"></script>
         <a
           href="#"
-          class="back-to-top d-flex align-items-center justify-content-center"
+          className="back-to-top d-flex align-items-center justify-content-center"
         >
-          <i class="bi bi-arrow-up-short"></i>
+          <i className="bi bi-arrow-up-short"></i>
         </a>
 
         <script src="/assets/js/main.js"></script>

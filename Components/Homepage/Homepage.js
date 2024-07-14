@@ -249,23 +249,30 @@ const Homepage = () => {
                               <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Source</th>
-                                <th scope="col">Count</th>
-                                <th scope="col">Last Entry</th>
+                                <th scope="col">Completed</th>
+                                <th scope="col">Left</th>
+                                <th scope="col">Total Links</th>
+                                <th scope="col">Total Pages</th>
                               </tr>
                             </thead>
                             <tbody>
-                              {data?.completed_total?.map((item, index) => (
+                              {data?.mergedData?.map((item, index) => (
                                 <tr key={index}>
                                   <th>{index + 1}</th>
                                   <th scope="row">
-                                    <Link href={`/plan-details/${item?._id}`}>
-                                      {item?._id}
+                                    <Link href={`/source/${item?.source}`}>
+                                      {item?.source}
                                     </Link>
                                   </th>
-                                  <td>{item?.count}</td>
-                                  <td>
-                                    {new Date(item?.last_entry).toDateString()}
+                                  <td className="text-success fw-bold">
+                                    {item?.completed_count}
                                   </td>
+                                  <td className="text-grey">
+                                    {item?.collected_count -
+                                      item?.completed_count}
+                                  </td>
+                                  <td>{item?.collected_count}</td>
+                                  <td>{item?.collected_page}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -387,6 +394,7 @@ const Homepage = () => {
                                   className="text-primary"
                                 >
                                   {item?.title}
+                                  {item?.page_title}
                                 </Link>
                               </td>
                               <td>
