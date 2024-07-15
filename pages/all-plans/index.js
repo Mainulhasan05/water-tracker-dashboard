@@ -5,7 +5,7 @@ import SinglePlan from "@/Components/All_Plans/SinglePlan";
 
 const Index = () => {
   const router = useRouter();
-  const { search = "", page = 1, limit = 10 } = router.query;
+  const { search = "", page = 1, limit = 1 } = router.query;
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState(search);
   const [currentPage, setCurrentPage] = useState(Number(page));

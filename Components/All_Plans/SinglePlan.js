@@ -40,23 +40,21 @@ const SinglePlan = ({ data }) => {
 
       <h5>Similar Plans</h5>
       {data.similar_with.map((similar) => (
-        <div className="card mb-3" key={similar.details._id}>
+        <div className="card mb-3" key={similar._id}>
           <div className="card-body">
             <div className="d-flex justify-content-between">
               <div className="form-check">
                 <input
                   className="form-check-input"
                   type="checkbox"
-                  id={`checkbox-${similar.details._id}`}
-                  onChange={() =>
-                    handleCheckboxChange(similar.details.model_num)
-                  }
+                  id={`checkbox-${similar._id}`}
+                  onChange={() => handleCheckboxChange(similar.model_num)}
                 />
                 <label
                   className="form-check-label"
-                  htmlFor={`checkbox-${similar.details._id}`}
+                  htmlFor={`checkbox-${similar._id}`}
                 >
-                  {similar.details.title}
+                  {similar.title}
                 </label>
               </div>
               <button className="btn btn-danger mt-3" onClick={handleDelete}>
@@ -64,17 +62,13 @@ const SinglePlan = ({ data }) => {
               </button>
             </div>
 
-            <a
-              href={similar.details.href}
-              target="_blank"
-              className="card-link"
-            >
+            <a href={similar.href} target="_blank" className="card-link">
               Visit Orginal
             </a>
             <div className="mt-3">
-              {similar?.details?.images.length > 0 && (
+              {similar?.images?.length > 0 && (
                 <img
-                  src={process.env.IMAGE_URL + similar.details.images[0]}
+                  src={process.env.IMAGE_URL + similar.images[0]}
                   alt="Similar Plan"
                   className="img-thumbnail mr-2"
                   style={{ maxWidth: "200px" }}
