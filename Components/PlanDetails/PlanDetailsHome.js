@@ -4,7 +4,6 @@ import FullSpecificationsTable from "./FullSpecificationsTable";
 import KeySpecifications from "./KeySpecifications";
 
 const PlanDetailsHome = ({ planDetails }) => {
-  console.log(planDetails);
   return (
     <main id="main" className="main">
       {planDetails?.title}sadsad
