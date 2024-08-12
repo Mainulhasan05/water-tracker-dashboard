@@ -6,13 +6,22 @@ const SourceCardItem = ({ item }) => {
   return (
     <div className="card mb-4 shadow-sm">
       <Link href={`/plan-details/${item?.model_num}`}>
-        <img
+        {item?.images?.length > 0 && (
+          <img
+            src={process.env.IMAGE_URL + item.images[0]}
+            alt="Parent Plan"
+            className="img-thumbnail mr-2"
+            width={400}
+            height={250}
+          />
+        )}
+        {/* <img
           src="https://cdn.houseplansservices.com/product/1kio6f6h0se9qhsvqdsv7aht3o/w800x533.jpg?v=8"
           className="card-img-top"
           alt="Home Plan Image"
           width={300}
           height={250}
-        />
+        /> */}
       </Link>
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-center mb-2">
