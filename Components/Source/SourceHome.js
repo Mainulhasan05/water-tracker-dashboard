@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import SourceCardItem from "./SourceCardItem";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const SourceHome = ({ data }) => {
   const router = useRouter();

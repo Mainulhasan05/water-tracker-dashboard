@@ -8,7 +8,7 @@ const nextConfig = {
     IMAGE_URL: "http://103.79.216.234",
   },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "103.79.216.234"],
   },
 };
 
