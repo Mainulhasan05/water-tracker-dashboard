@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import SourceCardItem from "./SourceCardItem";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
-const SourceHome = ({ data }) => {
+const SourceHome = () => {
   const router = useRouter();
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 18; //
+  useEffect(() => {
+    console.log(router);
+
+    if (router.query.slug) {
+      loadData(router.query.slug);
+    }
+  }, [router.query]);
+
+  const loadData = async (slug) => {
+    const res = await axiosInstance.get(`/source/${slug}`);
+    const data = await res.data;
+    console.log(data);
+    setData(data);
+  };
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
     router.push(`?page=${page}`, undefined, { shallow: true });

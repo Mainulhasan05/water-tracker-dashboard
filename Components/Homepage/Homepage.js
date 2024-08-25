@@ -234,7 +234,7 @@ const Homepage = () => {
 
                     <div className="card-body">
                       <h5 className="card-title">
-                        Similarity Check <span>| Completed</span>
+                        Uploaded <span>| Completed</span>
                       </h5>
 
                       <div className="d-flex align-items-center">
@@ -242,7 +242,7 @@ const Homepage = () => {
                           <i className="bi bi-cart"></i>
                         </div>
                         <div className="ps-3">
-                          <h6>{data?.similarity_check}</h6>
+                          <h6>{data?.uploaded}</h6>
                           <span className="text-success small pt-1 fw-bold">
                             12%
                           </span>{" "}
