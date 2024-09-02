@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import axios from "../../utils/axiosInstance";
+import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
+import { C } from "@/public/assets/vendor/chart.js/chunks/helpers.segment";
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const [userObj, setUserObj] = useState({
     name: "",
     email: "",
-    username: "",
     password: "",
-    phone: "",
   });
   const router = useRouter();
   const handleChange = (e) => {
@@ -21,19 +21,24 @@ const Register = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (userObj.phone.length !== 11) {
-      toast.error("Phone number must be 11 digit");
-      return;
-    }
+    
     setLoading(true);
-    const res = await axios.post("/api/auth/register", userObj);
-    if (res.data.status) {
+    try {
+      const res = await axios.post("/api/register", userObj);
+    if (res.status === 200 || res.status === 201) {
       toast.success(res.data.message);
+      Cookies.set("token", res.data.token, { expires: 70 });
       setTimeout(() => {
         router.push("/login");
       }, 2000);
     } else {
       toast.error(res.data.message);
+      setLoading(false);
+    }
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.response.data.message);
+      
     }
     setLoading(false);
   };
@@ -103,31 +108,7 @@ const Register = () => {
                           </div>
                         </div>
 
-                        <div className="col-12">
-                          <label for="yourUsername" className="form-label">
-                            Phone
-                          </label>
-                          <div className="input-group has-validation">
-                            <span
-                              className="input-group-text"
-                              id="inputGroupPrepend"
-                            >
-                              +88
-                            </span>
-                            <input
-                              type="text"
-                              onChange={handleChange}
-                              name="phone"
-                              className="form-control"
-                              id="yourPhone"
-                              required
-                            />
-                            <div className="invalid-feedback">
-                              Please choose a Phone.
-                            </div>
-                          </div>
-                        </div>
-
+                       
                         <div className="col-12">
                           <label for="yourPassword" className="form-label">
                             Password

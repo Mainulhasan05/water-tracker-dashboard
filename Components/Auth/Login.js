@@ -22,7 +22,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const res = await axiosInstance.post("/api/auth/login", userObj);
+    try {
+      const res = await axiosInstance.post("/api/login", userObj);
     if (res.data.status) {
       toast.success(res.data.message);
 
@@ -31,12 +32,12 @@ const Login = () => {
         router.push("/");
       }
 
-      // Cookies.set('mess_token',res.data.data.token)
-      // setTimeout(() => {
-      //   router.push('/')
-      // }, 2000);
     } else {
       toast.error(res.data.message);
+    }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      
     }
     setLoading(false);
   };

@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="d-flex align-items-center justify-content-between">
           <Link href="/" className="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="" />
-            <span className="d-none d-lg-block">HomePlanAdmin</span>
+            <span className="d-none d-lg-block">Waterlogs</span>
           </Link>
           <i
             onClick={() => {
