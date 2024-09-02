@@ -24,20 +24,18 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await axiosInstance.post("/api/login", userObj);
-    if (res.data.status) {
-      toast.success(res.data.message);
+      if (res.data.status) {
+        toast.success(res.data.message);
 
-      if (res.data.data.token) {
-        Cookies.set("token", res.data.data.token);
-        router.push("/");
+        if (res.data.token) {
+          Cookies.set("token", res.data.token);
+          router.push("/");
+        }
+      } else {
+        toast.error(res.data.message);
       }
-
-    } else {
-      toast.error(res.data.message);
-    }
     } catch (error) {
       toast.error(error.response.data.message);
-      
     }
     setLoading(false);
   };

@@ -1,6 +1,6 @@
-import Login from '@/Components/Auth/Login'
-import Link from 'next/link'
-import React from 'react'
+import Login from "@/Components/Auth/Login";
+import Link from "next/link";
+import React from "react";
 
 export const getServerSideProps = async (context) => {
   const token = context.req.cookies.token;
@@ -13,17 +13,18 @@ export const getServerSideProps = async (context) => {
       },
     };
   }
-  
 
-  
+  return {
+    props: {},
+  };
 };
 
 const index = () => {
   return (
     <div>
-    <Login/>
+      <Login />
     </div>
-  )
-}
+  );
+};
 
-export default index
+export default index;
