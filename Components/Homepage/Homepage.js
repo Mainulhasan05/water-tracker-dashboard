@@ -291,43 +291,34 @@ const Homepage = () => {
                       <h5 className="card-title">
                         Reports <span>/Today</span>
                       </h5>
-                      {/* "completed_total": [
-{
-"_id": "familyhomeplans",
-"count": 2345,
-"last_entry": "2024-07-08T13:32:33.176Z"
-}, */}
+      
                       <div id="reportsChart">
                         {
                           <table className="table table-borderless datatable">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Source</th>
-                                <th scope="col">Completed</th>
-                                <th scope="col">Left</th>
-                                <th scope="col">Total Links</th>
-                                <th scope="col">Total Pages</th>
+                                <th scope="col">User</th>
+                                <th scope="col">No Of Jugs</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Updated By</th>
+                                
                               </tr>
                             </thead>
                             <tbody>
-                              {data?.mergedData?.map((item, index) => (
+                              {data?.data?.waterLogsToday?.map((item, index) => (
                                 <tr key={index}>
                                   <th>{index + 1}</th>
                                   <th scope="row">
-                                    <Link href={`/source/${item?.source}`}>
-                                      {item?.source}
-                                    </Link>
+                                    {item?.user?.name}
                                   </th>
                                   <td className="text-success fw-bold">
-                                    {item?.completed_count}
+                                    {item?.numberOfJugs}
                                   </td>
                                   <td className="text-grey">
-                                    {item?.collected_count -
-                                      item?.completed_count}
+                                    {new Date(item?.date).toDateString()}
                                   </td>
-                                  <td>{item?.collected_count}</td>
-                                  <td>{item?.collected_page}</td>
+                                  <td>{item?.updatedBy?.name}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -422,48 +413,38 @@ const Homepage = () => {
 
                     <div className="card-body">
                       <h5 className="card-title">
-                        Recent Data <span>| Collected</span>
+                        Recent Data <span>| Last 7 Days</span>
                       </h5>
-
                       <table className="table table-borderless datatable">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Source</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Time</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {/* {data?.data?.map((item, index) => (
-                            <tr>
-                              <th scope="row">
-                                <Link href={`/plan-details/${item?.model_num}`}>
-                                  #{item?.model_num}
-                                </Link>
-                              </th>
-                              <td>{item?.source}</td>
-                              <td>
-                                <Link
-                                  href={`/plan-details/${item?.model_num}`}
-                                  className="text-primary"
-                                >
-                                  {item?.title}
-                                  {item?.page_title}
-                                </Link>
-                              </td>
-                              <td>
-                                {new Date(item?.timestamp).toLocaleString()}
-                              </td>
-                              <td>
-                                <span className="badge bg-success">
-                                  Success
-                                </span>
-                              </td>
-                            </tr>
-                          ))} */}
-                        </tbody>
-                      </table>
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">User</th>
+                                <th scope="col">No Of Jugs</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Updated By</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {data?.data?.waterLogsLast7Days?.map((item, index) => (
+                                <tr key={index}>
+                                  <th>{index + 1}</th>
+                                  <th scope="row">
+                                    {item?.user?.name}
+                                  </th>
+                                  <td className="text-success fw-bold">
+                                    {item?.numberOfJugs}
+                                  </td>
+                                  <td className="text-grey">
+                                    {new Date(item?.date).toDateString()}
+                                  </td>
+                                  <td>{item?.updatedBy?.name}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+
                     </div>
                   </div>
                 </div>

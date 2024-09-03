@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axiosInstance from '../../utils/axiosInstance';
+import toast from 'react-hot-toast';
 const AddForm = () => {
   const { data } = useSelector((state) => state.homepage);
   const [selectedUser, setSelectedUser] = useState('');
@@ -26,9 +27,9 @@ const AddForm = () => {
     try {
       // Make a POST request to /api/waterlogs
       const response = await axiosInstance.post('/api/waterlogs', formData);
-        console.log('Water log created:', response.data);
+        
         if (response.status === 201) {
-          alert('Water log created successfully');
+          toast.success('Water log created successfully');
         }
     } catch (error) {
       console.error('Error creating water log:', error);
