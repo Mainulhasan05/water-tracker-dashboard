@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 const AddForm = () => {
   const { data } = useSelector((state) => state.homepage);
   const [selectedUser, setSelectedUser] = useState('');
-  const [jogs, setJogs] = useState(0);
+  const [jogs, setJogs] = useState(1);
   const [date, setDate] = useState('');
 
   useEffect(() => {
