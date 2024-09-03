@@ -28,7 +28,7 @@ const Login = () => {
         toast.success(res.data.message);
 
         if (res.data.token) {
-          Cookies.set("token", res.data.token);
+          Cookies.set("token", res.data.token, { expires: 100 });
           router.push("/");
         }
       } else {
