@@ -366,9 +366,9 @@ const Navbar = () => {
             <span>Plan</span>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" href="/all-plans">
+            <Link className="nav-link" href="/history">
               <i className="bi bi-file-earmark-text"></i>
-              <span>All Plans</span>
+              <span>All History</span>
             </Link>
           </li>
 

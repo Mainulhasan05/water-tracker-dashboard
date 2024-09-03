@@ -6,6 +6,6 @@ import axios from "../../utils/axiosInstance";
 // };
 
 export const loadHomeData = async () => {
-  const res = await axios.get("/data");
+  const res = await axios.get("/api/dashboard");
   return res.data;
 };

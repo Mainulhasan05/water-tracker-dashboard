@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchHomeData } from "@/features/homepage/homepageSlice";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
+import AddForm from "./AddForm";
 const Homepage = () => {
   const { data } = useSelector((state) => state.homepage);
   const dispatch = useDispatch();
@@ -42,7 +43,9 @@ const Homepage = () => {
             </button>
           </nav>
         </div>
-
+        <section className="section dashboard">
+          <AddForm/>
+        </section>
         <section className="section dashboard">
           <div className="row">
             <div className="col-lg-8">
@@ -432,7 +435,7 @@ const Homepage = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {data?.data?.map((item, index) => (
+                          {/* {data?.data?.map((item, index) => (
                             <tr>
                               <th scope="row">
                                 <Link href={`/plan-details/${item?.model_num}`}>
@@ -458,7 +461,7 @@ const Homepage = () => {
                                 </span>
                               </td>
                             </tr>
-                          ))}
+                          ))} */}
                         </tbody>
                       </table>
                     </div>
