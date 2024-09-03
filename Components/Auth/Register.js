@@ -30,7 +30,7 @@ const Register = () => {
       Cookies.set("token", res.data.token, { expires: 70 });
       setTimeout(() => {
         router.push("/login");
-      }, 2000);
+      }, 1000);
     } else {
       toast.error(res.data.message);
       setLoading(false);
