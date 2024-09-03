@@ -24,7 +24,7 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await axiosInstance.post("/api/login", userObj);
-      if (res.data.status) {
+      if (res.data.token) {
         toast.success(res.data.message);
 
         if (res.data.token) {
