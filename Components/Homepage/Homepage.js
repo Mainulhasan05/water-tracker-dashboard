@@ -423,6 +423,7 @@ const Homepage = () => {
                                 <th scope="col">No Of Jugs</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Updated By</th>
+                                <th scope="col">Updated At</th>
                                 
                               </tr>
                             </thead>
@@ -440,6 +441,7 @@ const Homepage = () => {
                                     {new Date(item?.date).toDateString()}
                                   </td>
                                   <td>{item?.updatedBy?.name}</td>
+                                  <td>{new Date(item?.updatedAt).toDateString()} <b>{new Date(item?.updatedAt).toLocaleTimeString()}</b></td>
                                 </tr>
                               ))}
                             </tbody>
